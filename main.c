@@ -10,7 +10,7 @@ int main(int ac, char **argv)
 {
 	char *prompt = "(shell) $ ";
 
-	char *line.ptr;
+	char *line_ptr;
 
 	size_t i = 0;
 
@@ -18,9 +18,9 @@ int main(int ac, char **argv)
 	(void)argv;
 
 	printf("%s", prompt);
-	getline(&line.ptr, &i, stdin);
-	printf("%s\n", line.ptr);
+	getline(&line_ptr, &i, stdin);
+	printf("%s\n", line_ptr);
 
-	free(line.ptr);
+	free(line_ptr);
 	return (0);
 }
