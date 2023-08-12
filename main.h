@@ -3,5 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
+void exe_cmd(char **argv);
 #endif
