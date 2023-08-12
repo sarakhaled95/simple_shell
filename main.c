@@ -9,16 +9,12 @@
 int main(int ac, char **argv)
 {
 	char *prompt = "(shell) $ ";
-
 	char *line_ptr = NULL, *line_ptr_cpy = NULL;
-
 	size_t i = 0;
 	ssize_t numchar;
 	const char *delim = " \n";
-	int n_token = 0;
+	int n_token = 0, n;
 	char *token;
-	int n;
-
 	(void)ac;
 
 	while (1)
@@ -30,17 +26,13 @@ int main(int ac, char **argv)
 				printf("Exiting shell \n");
 				return (-1);
 			}
-
-		/* allocate space for line ptr copy*/
 		line_ptr_cpy = malloc(sizeof(char) * numchar);
 		if (line_ptr_cpy == NULL)
 		{
 			perror("memory allocation error");
 			return (-1);
 		}
-
 		strcpy(line_ptr_cpy, line_ptr);
-
 		token = strtok(line_ptr, delim);
 		while (token != NULL)
 		{
@@ -48,13 +40,8 @@ int main(int ac, char **argv)
 			token = strtok(NULL, delim);
 		}
 		n_token++;
-
-		/* allocating space for array to hild the stings*/
 		argv = malloc(sizeof(char *) * n_token);
-
-		/* storing each token in the argv array*/
-		token = strtok(line_ptr_cpy, delim);
-		
+		token = strtok(line_ptr_cpy, delim);/* storing each token in the argv array*/
 		for (n = 0; token != NULL; n++)
 		{
 			argv[n] = malloc(sizeof(char) * strlen(token));
@@ -64,11 +51,7 @@ int main(int ac, char **argv)
 		argv[n] = NULL;
 		exe_cmd(argv);
 	}
-
-
-	/* free up all  allocated memory */
-		free (line_ptr_cpy);
+		free(line_ptr_cpy); /* free up all  allocated memory */
 		free(line_ptr);
-
 	return (0);
 }

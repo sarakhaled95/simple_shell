@@ -1,4 +1,4 @@
-#ifndef MIAN_H
+#ifndef MAIN_H
 #define MAIN_H
 
 #include <stdio.h>
@@ -7,4 +7,6 @@
 #include <unistd.h>
 
 void exe_cmd(char **argv);
+char *get_locat(char *cmd);
+
 #endif
