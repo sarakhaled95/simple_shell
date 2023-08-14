@@ -81,6 +81,7 @@ typedef struct passinfo
 
 void exe_cmd(char **argv); /*exec_cmd.c*/
 char *get_locat(char *cmd); /*get_locat.c*/
+
 /* string.c */
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);

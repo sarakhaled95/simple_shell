@@ -12,13 +12,11 @@ char *get_locat(char *cmd)
 
 	/*path = _getenv(info_st *info, "PATH");*/
 	path = getenv("PATH");
-
 	if (path)
 	{
 		path_cpy = _strdup(path);
 		cmd_length = _strlen(cmd);
 		path_token = strtok(path_cpy, ":");
-
 		while (path_token != NULL)
 		{
 			dir_length = _strlen(path_token);
@@ -28,7 +26,6 @@ char *get_locat(char *cmd)
 			_strcat(file_path, "/");
 			_strcat(file_path, cmd);
 			_strcat(file_path, "\0");
-
 			if (stat(file_path, &buff) == 0)
 			{
 				free(path_cpy);
