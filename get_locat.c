@@ -10,13 +10,14 @@ char *get_locat(char *cmd)
 	int cmd_length, dir_length;
 	struct stat buff;
 
-	path = _getenv("PATH");
+	/*path = _getenv(info_st *info, "PATH");*/
+	path = getenv("PATH");
 
 	if (path)
 	{
 		path_cpy = _strdup(path);
 		cmd_length = _strlen(cmd);
-		path_token = _strtok(path_cpy, ":");
+		path_token = strtok(path_cpy, ":");
 
 		while (path_token != NULL)
 		{
@@ -37,7 +38,7 @@ char *get_locat(char *cmd)
 			else
 			{
 				free(file_path);
-				path_token = _strtok(NULL, ":");
+				path_token = strtok(NULL, ":");
 			}
 		}
 		free(path_cpy);

@@ -8,16 +8,18 @@
 
 void exe_cmd(char **argv)
 {
-	char *cmd = NULL;
+	char *cmd = NULL, *actual_cmd = NULL;
 
 	if (argv)
 	{
 		cmd = argv[0];
 
-		if (execve(cmd, argv, NULL) == -1)
+		actual_cmd = get_locat(cmd);
+
+		if (execve(actual_cmd, argv, NULL) == -1)
 		{
 			perror("Error:");
-		};
+		}
 	}
 
 }

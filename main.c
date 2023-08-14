@@ -38,7 +38,7 @@ int main(int ac, char **argv)
 		{
 			n_token++;
 			token = strtok(NULL, delim);
-		}`
+		}
 		n_token++;
 		argv = malloc(sizeof(char *) * n_token);
 		token = strtok(line_ptr_cpy, delim);/* storing each token in the argv array*/
