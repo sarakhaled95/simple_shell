@@ -32,20 +32,20 @@ int main(int ac, char **argv)
 			perror("memory allocation error");
 			return (-1);
 		}
-		strcpy(line_ptr_cpy, line_ptr);
+		_strcpy(line_ptr_cpy, line_ptr);
 		token = strtok(line_ptr, delim);
 		while (token != NULL)
 		{
 			n_token++;
 			token = strtok(NULL, delim);
-		}
+		}`
 		n_token++;
 		argv = malloc(sizeof(char *) * n_token);
 		token = strtok(line_ptr_cpy, delim);/* storing each token in the argv array*/
 		for (n = 0; token != NULL; n++)
 		{
 			argv[n] = malloc(sizeof(char) * strlen(token));
-			strcpy(argv[n], token);
+			_strcpy(argv[n], token);
 			token = strtok(NULL, delim);
 		}
 		argv[n] = NULL;
