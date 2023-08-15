@@ -30,3 +30,18 @@ char *_getenv(info_st *info, const char *name)
 	}
 	return (NULL);
 }
+
+/**
+ * get_environ - returns the string array copy of our environ
+ * @info: struct
+ * Return: environ
+ */
+char **get_environ(info_st *info)
+{
+	if (!info->environ || info->env_changed)
+	{
+		info->environ = list_to_strings(info->env);
+		info->env_changed = 0;
+	}
+	return (info->environ);
+}

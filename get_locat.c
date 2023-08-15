@@ -1,17 +1,13 @@
 #include "main.h"
-/**
- * get_locat - get the path of the givin command
- * @cmd: command
- * Return: path
- */
-char *get_locat(char *cmd)
+
+/*char *get_loacat(char *cmd)
 {
 	char *path, *path_cpy, *path_token, *file_path;
 	int cmd_length, dir_length;
 	struct stat buff;
+	info_st *info;
 
 	path = get_path(info, _getenv(info, "PATH"), info->argv[0]);
-	/*path = getenv("PATH");*/
 	if (path)
 	{
 		path_cpy = _strdup(path);
@@ -46,4 +42,45 @@ char *get_locat(char *cmd)
 		return (NULL);
 	}
 	return (NULL);
+}
+*/
+/**
+ * get_location - finds a command in path
+ * @info: struct
+ * Return: Always 0
+ */
+void get_location(info_st *info)
+{
+	char *path = NULL;
+	int i, k;
+
+	info->path = info->argv[0];
+	if (info->linecount_flag == 1)
+	{
+		info->line_count++;
+		info->linecount_flag = 0;
+	}
+	for (i = 0, k = 0; info->arg[i]; i++)
+		if (!is_delim(info->arg[i], "\t\n"))
+			k++;
+	if (!k)
+		return;
+
+	path = find_path(info, _getenv(info, "PATH"), info->argv[0]);
+	if (path)
+	{
+		info->path = path;
+		fork_cmd(info);
+	}
+	else
+	{
+		if ((interactive(info) || _getenv(info, "PATH")
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			fork_cmd(info);
+		else if (*(info->arg) != '\n')
+		{
+			info->status = 127;
+			print_error(info, "not found\n");
+		}
+	}
 }

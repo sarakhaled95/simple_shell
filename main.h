@@ -16,6 +16,7 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+extern char **environ;
 
 /**
  * struct liststr - singly linked list
@@ -80,7 +81,7 @@ typedef struct passinfo
 	0, 0, 0}
 
 void exe_cmd(char **argv); /*exec_cmd.c*/
-char *get_locat(char *cmd); /*get_locat.c*/
+void get_location(info_st *info); /*get_locat.c*/
 
 /* string.c */
 int _strlen(char *s);
@@ -96,6 +97,7 @@ void _puts(char *str);
 /*enviroment_var.c*/
 char *_getenv(info_st *info, const char *name);
 int _current_env(info_st *info);
+char **get_environ(info_st *info);
 
 /*list_string.c*/
 size_t print_liststr(const list_st *h);
@@ -104,4 +106,25 @@ size_t print_liststr(const list_st *h);
 char *dup_chars(char *pathstr, int start, int stop);
 char *get_path(info_st *info, char *pathstr, char *cmd);
 int is_cmd(info_st *info, char *path);
+
+/*function1.c*/
+void print_error(info_st *info, char *estr);
+int print_d(int input, int fd);
+int is_delim(char c, char *delim);
+int interactive(info_st *info);
+
+/*errstr_func.c*/
+int _eputchar(char c);
+void _eputs(char *str);
+
+/*fork.c*/
+void fork_cmd(info_st *info);
+
+/* info_st.c*/
+void free_info(info_st *info, int all);
+
+/* memory_func.c*/
+int bfree(void **ptr);
+void ffree(char **pp);
+void free_list(list_st **head_ptr);
 #endif

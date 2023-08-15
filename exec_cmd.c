@@ -14,7 +14,7 @@ void exe_cmd(char **argv)
 	{
 		cmd = argv[0];
 
-		actual_cmd = get_locat(cmd);
+		actual_cmd = get_location(char *cmd);
 
 		if (execve(actual_cmd, argv, NULL) == -1)
 		{
