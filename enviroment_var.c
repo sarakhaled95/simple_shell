@@ -16,7 +16,7 @@ int _current_env(info_st *info)
  * @name: enviroment variable name
  * Return: env value
  */
-/*char *_getenv(info_st *info, const char *name)
+char *_getenv(info_st *info, const char *name)
 {
 	list_st *node = info->env;
 	char *p;
@@ -29,4 +29,4 @@ int _current_env(info_st *info)
 		node = node->next;
 	}
 	return (NULL);
-}*/
+}

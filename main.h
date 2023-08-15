@@ -94,9 +94,14 @@ int _putchar(char c);
 void _puts(char *str);
 
 /*enviroment_var.c*/
-/*char *_getenv(info_st *info, const char *name);*/
+char *_getenv(info_st *info, const char *name);
 int _current_env(info_st *info);
 
 /*list_string.c*/
 size_t print_liststr(const list_st *h);
+
+/*path.c*/
+char *dup_chars(char *pathstr, int start, int stop);
+char *get_path(info_st *info, char *pathstr, char *cmd);
+int is_cmd(info_st *info, char *path);
 #endif

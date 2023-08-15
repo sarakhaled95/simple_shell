@@ -10,8 +10,8 @@ char *get_locat(char *cmd)
 	int cmd_length, dir_length;
 	struct stat buff;
 
-	/*path = _getenv(info_st *info, "PATH");*/
-	path = getenv("PATH");
+	path = get_path(info, _getenv(info, "PATH"), info->argv[0]);
+	/*path = getenv("PATH");*/
 	if (path)
 	{
 		path_cpy = _strdup(path);
