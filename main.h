@@ -80,6 +80,17 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
+/**
+ * struct builtin - have built in string and related functions
+ * @type: the builting command flag
+ * @func: function
+ */
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_st *);
+} builtin_table;
+
 void exe_cmd(char **argv); /*exec_cmd.c*/
 void get_location(info_st *info); /*get_locat.c*/
 
