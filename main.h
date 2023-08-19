@@ -112,6 +112,10 @@ char **get_environ(info_st *info);
 
 /*list_string.c*/
 size_t print_liststr(const list_st *h);
+list_st *add_node(list_st **head, const char *str, int num);
+list_st *add_node_end(list_st **head, const char *str, int num);
+size_t print_list(const list_st *h);
+list_st *node_starts_with(list_st *node, char *prefix, char c);
 
 /*path.c*/
 char *dup_chars(char *pathstr, int start, int stop);
@@ -138,4 +142,22 @@ void free_info(info_st *info, int all);
 int bfree(void **ptr);
 void ffree(char **pp);
 void free_list(list_st **head_ptr);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memset(char *s, char b, unsigned int n);
+
+/*hsh*/
+int find_builtin(info_st *info);
+int hsh(info_st *info, char **av);
+
+/*builtin_commands.c*/
+int _myexit(info_st *info);
+int _myhelp(info_st *info);
+int print_alias(list_st *node);
+int _myalias(info_st *info);
+int _mycd(info_st *info);
+
+/*builtin_commands2.c*/
+int _myhistory(info_st *info);
+int unset_alias(info_st *info, char *str);
+int set_alias(info_st *info, char *str);
 #endif

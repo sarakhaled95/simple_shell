@@ -1,12 +1,12 @@
 #include "main.h"
 /**
  * main - the main function of shell
- * @ac: argument count
+ * @argc: argument count
  * @argv: argument vector
  * Return: 0 on success 1 for fail
  */
 
-int main(int ac, char **argv)
+int main(int argc, char **argv)
 {
 	info_st info[] = { INFO_INIT };
 	int fd = 2;
