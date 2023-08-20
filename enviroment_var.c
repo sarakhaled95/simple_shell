@@ -45,3 +45,19 @@ char **get_environ(info_st *info)
 	}
 	return (info->environ);
 }
+
+/**
+ * populate_env_list - populate env linked list
+ * @info: struct
+ * Return: Always 0
+ */
+int populate_env_list(info_st *info)
+{
+	list_t *node = NULL;
+	size_t i;
+
+	for (i = 0; environ[i]; i++)
+		add_node_end(&node, environ[i], 0);
+	info->env = node;
+	return (0);
+}

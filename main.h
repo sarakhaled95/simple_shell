@@ -16,6 +16,17 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+/* for convert_number() */
+#define CONVERT_UNSIGNED	2
+#define CONVERT_LOWERCASE	1
+
+/* IF USING SYSTEM getline()*/
+#define USE_GETLINE	0
+#define USE_STRTOK	0
+
+#define HIST_MAX	4096
+#define HIST_FILE	".simple_shell_history"
+
 extern char **environ;
 
 /**
@@ -104,11 +115,13 @@ char *starts_with(const char *haystack, const char *needle);
 /*string_1.c*/
 int _putchar(char c);
 void _puts(char *str);
+int _strcmp(char *s1, char *s2);
 
 /*enviroment_var.c*/
 char *_getenv(info_st *info, const char *name);
 int _current_env(info_st *info);
 char **get_environ(info_st *info);
+int populate_env_list(info_st *info);
 
 /*list_string.c*/
 size_t print_liststr(const list_st *h);
@@ -127,6 +140,11 @@ void print_error(info_st *info, char *estr);
 int print_d(int input, int fd);
 int is_delim(char c, char *delim);
 int interactive(info_st *info);
+char *convert_number(long int num, int base, int flags);
+
+/*function2.c*/
+void remove_comments(char *buf);
+int _erratoi(char *s);
 
 /*errstr_func.c*/
 int _eputchar(char c);
@@ -160,4 +178,9 @@ int _mycd(info_st *info);
 int _myhistory(info_st *info);
 int unset_alias(info_st *info, char *str);
 int set_alias(info_st *info, char *str);
+
+/*io_functions.c*/
+char *get_history_file(info_t *info);
+int read_history(info_t *info);
+
 #endif

@@ -36,3 +36,23 @@ int _putchar(char c)
 	return (1);
 }
 
+/**
+ * _strcmp - compares between two strings
+ * @s1: first string
+ * @s2: second string
+ * Return: neg if s1 < s2, pos if s1 > s2, zero if s1 == s2
+ */
+int _strcmp(char *s1, char *s2)
+{
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+		return (0);
+	else
+		return (*s1 < *s2 ? -1 : 1);
+}
