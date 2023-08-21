@@ -16,6 +16,12 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+/*for command chain*/
+#define CMD_NORM	0
+#define CMD_OR		1
+#define CMD_AND		2
+#define CMD_CHAIN	3
+
 /* for convert_number() */
 #define CONVERT_UNSIGNED	2
 #define CONVERT_LOWERCASE	1
@@ -117,11 +123,22 @@ int _putchar(char c);
 void _puts(char *str);
 int _strcmp(char *s1, char *s2);
 
+/*string_2.c*/
+char *_strchr(char *s, char c);
+char *_strncat(char *dest, char *src, int n);
+char *_strncpy(char *dest, char *src, int n);
+
 /*enviroment_var.c*/
 char *_getenv(info_st *info, const char *name);
-int _current_env(info_st *info);
+int _myenv(info_st *info);
 char **get_environ(info_st *info);
 int populate_env_list(info_st *info);
+int _mysetenv(info_st *);
+
+/*enviroment_var1.c*/
+int _setenv(info_st *info, char *var, char *value);
+int _unsetenv(info_st *info, char *var);
+int _myunsetenv(info_st *info);
 
 /*list_string.c*/
 size_t print_liststr(const list_st *h);
@@ -129,6 +146,12 @@ list_st *add_node(list_st **head, const char *str, int num);
 list_st *add_node_end(list_st **head, const char *str, int num);
 size_t print_list(const list_st *h);
 list_st *node_starts_with(list_st *node, char *prefix, char c);
+
+/*list_string1.c*/
+int delete_node_at_index(list_st **head, unsigned int index);
+ssize_t get_node_index(list_st *head, list_st *node);
+char **list_to_strings(list_st *head);
+size_t list_len(const list_st *h);
 
 /*path.c*/
 char *dup_chars(char *pathstr, int start, int stop);
@@ -149,6 +172,8 @@ int _erratoi(char *s);
 /*errstr_func.c*/
 int _eputchar(char c);
 void _eputs(char *str);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
 
 /*fork.c*/
 void fork_cmd(info_st *info);
@@ -180,7 +205,20 @@ int unset_alias(info_st *info, char *str);
 int set_alias(info_st *info, char *str);
 
 /*io_functions.c*/
-char *get_history_file(info_t *info);
-int read_history(info_t *info);
+char *get_history_file(info_st *info);
+int read_history(info_st *info);
+int build_history_list(info_st *info, char *buf, int linecount);
+int renumber_history(info_st *info);
+int write_history(info_st *info);
 
+/*stinfo.c*/
+void set_info(info_st *info, char **av);
+void clear_info(info_st *info);
+
+/*chain.c*/
+int is_chain(info_st *info, char *buf, size_t *p);
+void check_chain(info_st *info, char *buf, size_t *p, size_t i, size_t len);
+int replace_alias(info_st *info);
+int replace_vars(info_st *info);
+int replace_string(char **old, char *new);
 #endif

@@ -66,7 +66,7 @@ void get_location(info_st *info)
 	if (!k)
 		return;
 
-	path = find_path(info, _getenv(info, "PATH"), info->argv[0]);
+	path = get_path(info, _getenv(info, "PATH"), info->argv[0]);
 	if (path)
 	{
 		info->path = path;

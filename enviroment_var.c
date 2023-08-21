@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * _current_env - prints the current env
+ * _myenv - prints the current env
  * @info: structure
  * Return: Always 0
  */
-int _current_env(info_st *info)
+int _myenv(info_st *info)
 {
 	print_liststr(info->env);
 	return (0);
@@ -53,11 +53,28 @@ char **get_environ(info_st *info)
  */
 int populate_env_list(info_st *info)
 {
-	list_t *node = NULL;
+	list_st *node = NULL;
 	size_t i;
 
 	for (i = 0; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
 	info->env = node;
 	return (0);
+}
+
+/**
+ * _mysetenv - init a new env variable or modify an existing one
+ * @info: struct
+ * Return: Always 0
+ */
+int _mysetenv(info_st *info)
+{
+	if (info->argc != 3)
+	{
+		_eputs("Incorrect number of arguments\n");
+		return (1);
+	}
+	if (_setenv(info, info->argv[1], info->argv[2]))
+		return (0);
+	return (1);
 }
