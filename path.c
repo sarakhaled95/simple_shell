@@ -27,7 +27,7 @@ char *dup_chars(char *pathstr, int start, int stop)
  * @info: the info struct
  * @pathstr: the PATH string
  * @cmd: command to find
- * Rerurn: full path of cmd if success or NULL
+ * Return: full path of cmd if success or NULL
  */
 char *get_path(info_st *info, char *pathstr, char *cmd)
 {

@@ -1,6 +1,7 @@
 #include "main.h"
 
-/*char *get_loacat(char *cmd)
+/*
+ * char *get_loacat(char *cmd)
 {
 	char *path, *path_cpy, *path_token, *file_path;
 	int cmd_length, dir_length;
@@ -44,6 +45,7 @@
 	return (NULL);
 }
 */
+
 /**
  * get_location - finds a command in path
  * @info: struct

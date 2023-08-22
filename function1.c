@@ -18,7 +18,12 @@ void print_error(info_st *info, char *estr)
 	_eputs(": ");
 	_eputs(estr);
 }
-
+/**
+ * print_d - function prints a decimal number
+ * @input: the input
+ * @fd: the filedescriptor to write to
+ * Return: number of characters printed
+ */
 int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
