@@ -25,7 +25,7 @@ void set_info(info_st *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg, " \t");
+		info->argv = str_tok(info->arg, " \t");
 		if (!info->argv)
 		{
 			info->argv = malloc(sizeof(char *) * 2);
@@ -43,4 +43,3 @@ void set_info(info_st *info, char **av)
 		replace_vars(info);
 	}
 }
-

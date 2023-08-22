@@ -221,4 +221,15 @@ void check_chain(info_st *info, char *buf, size_t *p, size_t i, size_t len);
 int replace_alias(info_st *info);
 int replace_vars(info_st *info);
 int replace_string(char **old, char *new);
+
+/*strtok.c*/
+char **str_tok(char *str, char *d);
+char **str_tok2(char *str, char d);
+
+/*getline.c*/
+void sigintHandler(__attribute__((unused))int sig_num);
+int _getline(info_st *info, char **ptr, size_t *length);
+ssize_t read_buf(info_st *info, char *buf, size_t *i);
+ssize_t get_input(info_st *info);
+ssize_t input_buf(info_st *info, char **buf, size_t *len);
 #endif
